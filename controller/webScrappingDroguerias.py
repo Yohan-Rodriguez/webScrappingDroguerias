@@ -74,13 +74,23 @@ def search(word, writer):
 # Crear archivo excel
 writer = ExcelWriter('../docs_xlsx/Data.xlsx')
 
+# Leer excel Portafolio.xlsx
+df_read_portafolio = pd.read_excel('/Users/ASUS/PycharmProjects/webScrappingDroguerias/docs_xlsx/Portafolio.xlsx', index_col='i')
+temp = 0
+for word in df_read_portafolio["Ítems"]:
+    search(word.lower(), writer)
+    if temp ==4:
+        break
+    temp+=1
+
+
 # Llamadas a la función:
-palabra = 'Erassin 50 mg X 2 Tabletas'
-palabra2 = 'Esomeprazol 20 mg X 14 Tabletas AG'
+# palabra = 'Erassin 50 mg X 2 Tabletas'
+# palabra2 = 'Esomeprazol 20 mg X 14 Tabletas AG'
 # palabra3 ='Esomeprazol 20 mg X 30 Tabletas Colmed'
 # palabra4 = 'Eutirox 100 mcg X 50 Tabletas'
 
-search(palabra.lower(), writer)
-search(palabra2.lower(), writer)
+# search(palabra.lower(), writer)
+# search(palabra2.lower(), writer)
 # search(palabra3.lower(), writer)
 # earch(palabra4.lower(), writer)
